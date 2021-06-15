@@ -6,12 +6,12 @@ class Garden{
 
 
     
-    constructor({id, name, gardener_name, likes, location }){
+    constructor({id, name, likes, location, gardener_name}){
    
 
-        this.id = id
+        this.id = id,
         this.name = name,
-        this.gardener_name = gardener_name,
+        this.gardenerName = gardener_name,
         this.likes = likes,
         this.location = location,
 
@@ -20,18 +20,21 @@ class Garden{
      
     }
 
+    
+
 }
 
 
-makeACard =()=>{ console.log(this)
-        
+makeACard =(garden)=>{ 
+    //    debugger
+    
     return `
 
-        <h2 id="name" data-id="${this.id}">${this.name}</h2>
-        <h2 id="location"> ${this.location} </h2>
-        <h2> Gardener: ${this.gardener_name}</h2>
-        <p> ${this.likes} Rakes Up </p>
-        <button data-id="${this.id}" class="like-btn"> I Like</button>
+        <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
+        <h2 id="location"> Location: ${garden.location} </h2>
+        <h2> Gardener: ${garden.gardenerName}</h2>
+        <p> ${garden.likes} Rakes Up </p>
+        <button data-id="${garden.id}" class="like-btn"> I Like</button>
     
 
         `
@@ -45,17 +48,38 @@ renderGarden =(garden)=> {
   
     cardDiv.classList.add("card")
  
-      cardDiv.setAttribute("data-id", garden.id)
+    cardDiv.setAttribute("data-id", garden.id)
     
-      cardDiv.id = garden.id
+    cardDiv.id = garden.id
 
-        cardDiv.innerHTML = this.makeACard()
+    cardDiv.innerHTML = this.makeACard(garden)
+    
+   
+    console.log(document.querySelector("#garden-collection"));
+    console.log(garden);
+    console.log(this)
+    const collectionDiv = document.querySelector("#garden-collection");
+    
+    collectionDiv.append(cardDiv);
     
     
-    const collectionDiv = document.querySelector("#garden-collection")
     
-    collectionDiv.append(cardDiv)
-    
-    
-    
-} 
+}
+
+
+const sampleGarden = new Garden({id:99,name: "Bro's Garden", likes: 333, location: "Home", gardener_name: "Bro"})
+
+console.log(sampleGarden);
+ 
+renderGarden(sampleGarden);
+ 
+debugger
+
+
+
+
+
+console.log(document.querySelector("#garden-collection"));
+
+
+

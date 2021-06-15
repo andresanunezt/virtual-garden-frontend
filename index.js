@@ -1,25 +1,10 @@
 document.addEventListener("click", (event)=>{ console.log("You Just Clicked on == ", event.target) }  )
 
 
-// document.addEventListener("DOMContentLoaded",
+
+// const API_DATABASE_URL = "http://localhost:3000/gardens";
+// const API = new API;
 
 
 
-
-// const renderGardens =(gardenArray)=> {
   
-  
-//     gardenArray.forEach(garden => { 
-
-//         const newGarden = new Actor(actor)
-        
-            
-        
-
-//         newGarden.renderGarden(garden) 
-
-//     })
-// }
-
-
-API.fetchAllGardens()

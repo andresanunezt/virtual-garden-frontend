@@ -1,4 +1,4 @@
-class API {
+class API{
 
 
   
@@ -13,9 +13,12 @@ class API {
         .then(fetchedArray => { console.log(fetchedArray);
           
           
-          fetchedArray.forEach(arrayObj => {  console.log(arrayObj) 
+          fetchedArray.forEach(garden => {  
+            
+            console.log(garden) 
 
-            renderGarden(arrayObj)
+            const newGarden = new Garden(garden)
+            renderGarden(newGarden)
           
           }) 
       
@@ -25,3 +28,6 @@ class API {
 
 
 }
+
+API.fetchAllGardens()
+  
