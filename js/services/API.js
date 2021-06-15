@@ -15,6 +15,7 @@ class API {
           
           fetchedArray.forEach(arrayObj => {  console.log(arrayObj) 
 
+            renderGarden(arrayObj)
           
           }) 
       
