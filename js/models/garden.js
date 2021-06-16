@@ -43,6 +43,9 @@ makeACard =(garden)=>{
 
 renderGarden =(garden)=> {  
 
+
+    
+
     const cardDiv = document.createElement("div")
 
   
@@ -52,17 +55,16 @@ renderGarden =(garden)=> {
     
     cardDiv.id = garden.id
 
-    cardDiv.innerHTML = this.makeACard(garden)
-    
+    cardDiv.innerHTML = makeACard(garden)
+    //  debugger
    
-    console.log(document.querySelector("#garden-collection"));
+    
     console.log(garden);
-    console.log(this)
     const collectionDiv = document.querySelector("#garden-collection");
     
     collectionDiv.append(cardDiv);
     
-    
+    // debugger
     
 }
 
@@ -71,15 +73,17 @@ const sampleGarden = new Garden({id:99,name: "Bro's Garden", likes: 333, locatio
 
 console.log(sampleGarden);
  
-renderGarden(sampleGarden);
+ ;
+//  debugger
+// sampleGarden.renderGarden(sampleGarden)
  
-debugger
+// debugger
 
 
 
 
 
-console.log(document.querySelector("#garden-collection"));
+// console.log(document.querySelector("#garden-collection"));
 
 
 
