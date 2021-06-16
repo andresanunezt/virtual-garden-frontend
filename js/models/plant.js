@@ -32,11 +32,11 @@ makePlantCard =(plant)=>{
     
     return `
 
-        <h2 id="name" data-id="${plant.id}">Plant Name: ${plant.name}</h2>
-        <h2 id="plantType"> Plant Type: ${plant.plantType} </h2>>
-        <img src= "${plant.image}" alt="plant" width="100" height="200">
-        <p> ${plant.waterLevel} Water Level </p>
-        <button data-id="${plant.id}" class="waterLevel-btn"> water </button>
+        <h4 id="name" data-id="${plant.gardenID}"> Plant Name: ${plant.name} </h4>
+        <img src= "${plant.image}" alt="plant" width="150" height="150">
+        <h4 id="plantType"> Plant Type: ${plant.plantType} </h4>
+        <p> Water Level : ${plant.waterLevel}  </p>
+        <button data-id="${plant.id}" class="waterLevel-btn"> water+ </button>
     
 
         `
@@ -55,17 +55,26 @@ renderPlant =(plant)=> {
  
     cardDiv.setAttribute("data-id", plant.gardenID)
     
-    cardDiv.id = plant.id
+    cardDiv.id = plant.gardenID
 
     cardDiv.innerHTML = makePlantCard(plant)
     //  debugger
    
     
     console.log(plant);
-    const collectionDiv = document.getElementById(plant.gardenID)
+
+    const collectionDiv = document.getElementById(plant["gardenID"])
     
+    // debugger
     collectionDiv.append(cardDiv);
     
+
     // debugger
     
 }
+
+
+const samplePlant = new Plant({id:99, name: "cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99})
+
+
+// debugger

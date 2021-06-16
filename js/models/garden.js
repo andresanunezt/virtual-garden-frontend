@@ -29,15 +29,20 @@ makeACard =(garden)=>{
     //    debugger
     
     return `
-
+        <br>
+        <p> -------------------------------- </p>
+        <br>
         <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
-        <h2 id="location"> Location: ${garden.location} </h2>
-        <h2> Gardener: ${garden.gardenerName}</h2>
+        <h3 id="location"> Location: ${garden.location} </h3>
+        <h3> Gardener: ${garden.gardenerName}</h3>
         <p> ${garden.likes} Rakes Up </p>
         <button data-id="${garden.id}" class="like-btn"> I Like</button>
-    
-
+        <br>
+        <br>
+        <h2> Plants: </h2>
+        
         `
+
 
 }
 

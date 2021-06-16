@@ -1,4 +1,4 @@
-document.addEventListener("click", (event)=>{ console.log("You Just Clicked on == ", event.target) }  )
+document.addEventListener("click", (event)=>{ console.log(" Clicked on == ", event.target) }  )
 
 
 
@@ -7,5 +7,14 @@ document.addEventListener("click", (event)=>{ console.log("You Just Clicked on =
 
 
 
-  
-// API.fetchAllGardens()
+document.addEventListener("DOMContentLoaded", function(){
+
+    API.fetchAllGardens()
+    API.fetchAllPlants()
+    renderGarden(sampleGarden);
+    renderPlant(samplePlant);
+    
+}
+)
+
+
