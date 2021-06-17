@@ -1,13 +1,34 @@
 document.addEventListener("click", (event)=>{ console.log(" Clicked on == ", event.target) }  )
 
+let showTheForm = false;
 
 
-// const API_DATABASE_URL = "http://localhost:3000/gardens";
-// const API = new API;
-// const newGardenForm = document.getElementById("add-garden-form");
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    const gardenFormContainer = document.querySelector(".container");
+    
+
+    
+    const formButton = document.querySelector("#new-garden-btn");
+
+    formButton.addEventListener("click", () => {
+
+        
+        showTheForm = !showTheForm;
+       
+
+       
+        if (showTheForm) {
+        gardenFormContainer.style.display = "block";
+        } else {
+        gardenFormContainer.style.display = "none";
+        }
+
+    });
+
+
 
     API.fetchAllGardens()
     API.fetchAllPlants()
@@ -21,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // renderPlant(samplePlant2);
 
 //    debugger
+
+
    
      const newGardenForm = document.getElementById("add-garden-form");
     
@@ -68,45 +91,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     
-
-// const newGardenForm = document.querySelector("#add-garden-form");
-
-// debugger
-
-// newGardenForm.addEventListener("submit", event =>{ event.preventDefault();
-
-
-
-// const name = event.target.name.value
-// const location = event.target.location.value
-// const gardenerName = event.target.gardener_name.value
-// const submit = event.target.submit
-// console.log("SHOW ME SUBMIT - IN THE FORM:  ", submit)
-
-// fetch(API_DATABASE_URL, {
-
-//   method: "POST",
-//   headers: { "Content-Type": "application/json"},
-//   body: JSON.stringify({
-
-//         "name": name,
-//         "image": location,
-//         "gardenerName": gardenerName
-      
-          
-//   })
-
-// })
-// .then(response => response.json())
-// .then(post => renderGarden(post))
-
-
-
-//   event.target.reset()
- 
-
-// })
-
 
 
 
