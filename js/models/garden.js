@@ -47,14 +47,13 @@ makeACard =(garden)=>{
 
 }
 
+
+
 renderGarden =(garden)=> {  
 
-
     
-
     const cardDiv = document.createElement("div")
 
-  
     cardDiv.classList.add("card")
  
     cardDiv.setAttribute("data-id", garden.id)
@@ -63,9 +62,8 @@ renderGarden =(garden)=> {
 
     cardDiv.innerHTML = makeACard(garden)
     //  debugger
-   
-    
     console.log(garden);
+
     const collectionDiv = document.querySelector("#garden-collection");
     
     collectionDiv.append(cardDiv);
@@ -79,7 +77,7 @@ const sampleGarden = new Garden({id:99,name: "Bro's Garden", likes: 333, locatio
 
 console.log(sampleGarden);
  
- ;
+ 
 //  debugger
 // sampleGarden.renderGarden(sampleGarden)
  

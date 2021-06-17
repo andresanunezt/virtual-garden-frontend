@@ -34,7 +34,7 @@ class API{
       fetch(this.PLANT_DATABASE_URL).then(response => response.json())
       .then(fetchedArray => { console.log(fetchedArray);
         
-        // renderPlant(samplePlant);
+        // renderPlant(samplePlant2);
         
         fetchedArray.forEach(plant => {  
           
