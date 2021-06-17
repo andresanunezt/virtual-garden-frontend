@@ -37,7 +37,7 @@ makePlantCard =(plant)=>{
         <h4 id="plantType"> Plant Type: ${plant.plantType} </h4>
         <p> Water Level : ${plant.waterLevel}  </p>
         <button data-id="${plant.id}" class="waterLevel-btn"> water+ </button>
-    
+        <button data-id="${plant.id}" class="delete-btn"> dig out </button>
 
         `
 
@@ -74,7 +74,10 @@ renderPlant =(plant)=> {
 }
 
 
-const samplePlant = new Plant({id:99, name: "cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99})
+const samplePlant = new Plant({id:99, name: "Cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99})
+const samplePlant2 = new Plant({id:9, name: "Orchid", plant_type: "Flower", image:"https://assets.eflorist.com/assets/products/PHR_/TPL05-1A.jpg", water_level:6, garden_id: 1})
+console.log(samplePlant2);
 
 
-// debugger
+renderPlant(samplePlant2);
+

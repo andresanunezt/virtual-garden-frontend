@@ -37,6 +37,7 @@ makeACard =(garden)=>{
         <h3> Gardener: ${garden.gardenerName}</h3>
         <p> ${garden.likes} Rakes Up </p>
         <button data-id="${garden.id}" class="like-btn"> I Like</button>
+        <button data-id="${garden.id}" class="delete-btn"> Delete </button>
         <br>
         <br>
         <h2> Plants: </h2>

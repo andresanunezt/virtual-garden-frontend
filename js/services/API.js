@@ -12,7 +12,7 @@ class API{
         fetch(this.API_DATABASE_URL).then(response => response.json())
         .then(fetchedArray => { console.log(fetchedArray);
           
-          renderGarden(sampleGarden);
+          
           
           fetchedArray.forEach(garden => {  
             
@@ -55,3 +55,4 @@ class API{
 // API.fetchAllGardens()
 // API.fetchAllPlants()
 // renderGarden(sampleGarden);
+// renderPlant(samplePlant);
