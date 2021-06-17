@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const location = event.target.location.value
         const gardenerName = event.target.gardener_name.value
         const submit = event.target.submit
-        console.log("SHOW ME SUBMIT - IN THE FORM:  ", submit)
+        
         
         fetch(API.API_DATABASE_URL, {
         
@@ -85,8 +85,92 @@ document.addEventListener("DOMContentLoaded", function() {
         })
 // debugger
 
-//
+
+const gardenCollection = document.querySelector("#garden-collection")
+
+
+
+gardenCollection.addEventListener("click", event =>{ 
     
+    event.preventDefault(); 
+
+  
+  if(event.target.matches(".delete-btn")){   
+    
+    console.log(event.target) 
+    
+    
+    const id = event.target.dataset.id
+    
+    const gardenToDelete = document.getElementById(id)
+    
+    
+    fetch(`${API.API_DATABASE_URL}/${id}`, {
+        
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" }
+        
+    })
+    .then(response => response.json())
+    .then( 
+        
+        
+        // event.target.closest(".card").remove() 
+        
+        gardenToDelete.remove()
+        
+        
+        )        
+        
+     }
+        
+
+     if (event.target.matches(".like-btn") ) {   
+                       
+       
+
+    const pTagWithLikes = event.target.closest(".card").querySelector("p")
+
+    debugger
+    
+    const likeCount = parseInt(pTagWithLikes.textContent)  
+ 
+    const newLikes =  likeCount + 1
+    
+    const id = event.target.dataset.id
+    
+    // Make a PATCH/EDIT to   >  /toys/:id
+    const bodyObj = {
+        
+        likes: newLikes
+        
+    } 
+    
+    
+    
+    
+    fetch(`${API.API_DATABASE_URL}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyObj),
+    })
+    .then(r => r.json())
+    .then(updatedGarden => {
+        
+        console.log(updatedGarden)
+       
+        pTagWithLikes.textContent = `${updatedGarden.likes} rakes up`
+        
+    })
+   
+    
+}
+
+
+    
+    })
+
+
 })
 
 

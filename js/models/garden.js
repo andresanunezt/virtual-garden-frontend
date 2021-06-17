@@ -30,7 +30,7 @@ makeACard =(garden)=>{
     
     return `
         <br>
-        <p> -------------------------------- </p>
+        <h5> -------------------------------- </h5>
         <br>
         <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
         <h3 id="location"> Location: ${garden.location} </h3>
@@ -40,6 +40,48 @@ makeACard =(garden)=>{
         <button data-id="${garden.id}" class="delete-btn"> Delete </button>
         <br>
         <br>
+        <br>
+        <div class="container" style="text-align:center">
+    
+        <form class="add-plant-form" id="add-plant-form">
+        <h4> Add Plant to ${garden.name}</h4>
+        <input type="hidden" id="${garden.id}" name="gardenID" value="${garden.id}">
+        <h5>Name:</h5>
+        <input
+        type="text"
+        name="name"
+        value=""
+        placeholder="Plant Name"
+        class="input-text"
+        />
+
+      <h5>Plant Type:</h5>
+      <input
+        type="text"
+        name="plant_type"
+        value=""
+        placeholder="Type"
+        class="input-text"
+      />
+
+      <h5>Picture:</h5>
+      <input
+      type="text"
+      name="image"
+      value=""
+      placeholder="Add image"
+      class="input-text"
+      />
+
+      <input
+        type="submit"
+        name="submit"
+        value="Plant"
+        class="submit"
+      />
+    </form>
+  </div>
+
         <h2> Plants: </h2>
         
         `
