@@ -43,7 +43,7 @@ makeACard =(garden)=>{
         <br>
         <div class="container" style="text-align:center">
     
-        <form class="add-plant-form" id="add-plant-form">
+        <form class="add-plant-form" id="add-plant-form" data-form="${garden.id}">
         <h4> Add Plant to ${garden.name}</h4>
         <input type="hidden" id="${garden.id}" name="gardenID" value="${garden.id}">
         <h5>Name:</h5>
@@ -74,6 +74,7 @@ makeACard =(garden)=>{
       />
 
       <input
+    
         type="submit"
         name="submit"
         value="Plant"
@@ -85,7 +86,54 @@ makeACard =(garden)=>{
         <h2> Plants: </h2>
       </div>
         `
+if (event.target.matches(".addPlant") ) {
 
+    console.log(event.path[1])
+
+    const newPlantForm = event.path[1];
+
+   debugger
+
+   newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
+
+    console.log("EVENT HERE:", newPlantForm)
+    
+    const name = event.target.name.value
+    const image = event.target.image.value
+    const plantType = event.target.plantType.value
+    const gardenID = event.target.gardenID.value
+
+    fetch(API.PLANT_DATABASE_URL, {
+        
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
+      
+              "name": name,
+              "plant_type": plantType,
+              "image": image,
+              "gardener_id": gardenID,
+              "water_level": 0,
+                
+        })
+      
+      })
+      .then(response => response.json())
+      .then(post => renderPlant(post))
+      
+      
+      
+        event.target.reset()
+
+    
+    
+    
+
+    })
+  
+    debugger
+          
+      }
 
 
 }

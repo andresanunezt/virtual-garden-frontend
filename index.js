@@ -180,7 +180,7 @@ gardenCollection.addEventListener("click", event =>{
 
     const pTagWithLikes = event.target.closest(".card").querySelector("p")
 
-    debugger
+    // debugger
     
     const likeCount = parseInt(pTagWithLikes.textContent)  
  
@@ -222,10 +222,10 @@ if (event.target.matches(".waterLevel-btn") ) {
     const pTagWithWaterLevel = event.target.closest(".plant-card").querySelector("p")
 
     
-    const waterLevelNumber = pTagWithWaterLevel.textContent[15]
-    const waterLevel = parseInt(waterLevelNumber)  
+    const waterLevelNumber = parseInt(pTagWithWaterLevel.innerText)
+    // const waterLevel = parseInt(waterLevelNumber)  
  
-    const newWaterLevel =  waterLevel + 1
+    const newWaterLevel =  waterLevelNumber + 1
     
     debugger
 
@@ -251,7 +251,7 @@ if (event.target.matches(".waterLevel-btn") ) {
         
         console.log(updatedPlant)
        
-        pTagWithWaterLevel.textContent = ` Water Level : ${updatedPlant.water_level}  `
+        pTagWithWaterLevel.textContent = `${updatedPlant.water_level}`
         
         
         
@@ -261,61 +261,123 @@ if (event.target.matches(".waterLevel-btn") ) {
 }
 
 
-  
-   })
 
-   const newPlantForm = document.getElementById("add-plant-form");
+    
 
-//    debugger
-
-   newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
+})
 
 
-    const name = event.target.name.value
-    const image = event.target.image.value
-    const plantType = event.target.plantType.value
-    const gardenID = event.target.gardenID.value
+   
+// debugger
 
-    fetch(API.PLANT_DATABASE_URL, {
+// newPlantForms.addEventListener("submit", event =>{ event.preventDefault();
+
+// // debugger
+//         const name = event.target.name.value
+//         const image = event.target.image.value
+//         const plantType = event.target.plantType.value
+//         const gardenID = event.target.gardenID.value
+    
+//         fetch(API.PLANT_DATABASE_URL, {
+            
+//             method: "POST",
+//             headers: { "Content-Type": "application/json"},
+//             body: JSON.stringify({
+          
+//                   "name": name,
+//                   "plant_type": plantType,
+//                   "image": image,
+//                   "gardener_id": gardenID,
+//                   "water_level": 0,
+                    
+//             })
+          
+//           })
+//           .then(response => response.json())
+//           .then(post => renderPlant(post))
+          
+          
+          
+//             event.target.reset()
+    
         
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({
-      
-              "name": name,
-              "plant_type": plantType,
-              "image": image,
-              "gardener_id": gardenID,
-              "water_level": 0,
-                
-        })
-      
-      })
-      .then(response => response.json())
-      .then(post => renderPlant(post))
-      
-      
-      
-        event.target.reset()
-
+        
+        
     
+//         })
     
-    
-
-    })
-
 //    debugger
 
 })
 
 
-//     const newPlantForm = document.getElementById("add-plant-form");
+
+
+
+// function plantFormSubmits(formArray) {
+
+//         formArray.array.forEach(form => {
+
+//         form.addEventListener("submit", event =>{ event.preventDefault();
+
+//     // debugger
+//             const name = event.target.name.value
+//             const image = event.target.image.value
+//             const plantType = event.target.plantType.value
+//             const gardenID = event.target.gardenID.value
+        
+//             fetch(API.PLANT_DATABASE_URL, {
+                
+//                 method: "POST",
+//                 headers: { "Content-Type": "application/json"},
+//                 body: JSON.stringify({
+              
+//                       "name": name,
+//                       "plant_type": plantType,
+//                       "image": image,
+//                       "gardener_id": gardenID,
+//                       "water_level": 0,
+                        
+//                 })
+              
+//               })
+//               .then(response => response.json())
+//               .then(post => renderPlant(post))
+              
+              
+              
+//                 event.target.reset()
+        
+            
+            
+            
+        
+//             })
+        
+            
+//         });
+
+
+
+
+
+
+
+  
+//Logic for plant form
+
+// if (event.target.matches(".addPlant") ) {
+
+//     console.log(event.path[1])
+
+//     const newPlantForm = event.path[1];
 
 //    debugger
 
 //    newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
 
-
+//     console.log("EVENT HERE:", newPlantForm)
+    
 //     const name = event.target.name.value
 //     const image = event.target.image.value
 //     const plantType = event.target.plantType.value
@@ -348,16 +410,7 @@ if (event.target.matches(".waterLevel-btn") ) {
     
 
 //     })
-
-//    debugger
-
-
-
-
-
-
-
-
   
-
-
+//     debugger
+          
+//       }
