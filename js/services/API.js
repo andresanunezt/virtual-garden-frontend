@@ -7,6 +7,7 @@ class API{
  
     static API_DATABASE_URL = "http://localhost:3000/gardens"
     static PLANT_DATABASE_URL = "http://localhost:3000/plants"
+    
     static fetchAllGardens() {
 
         fetch(this.API_DATABASE_URL).then(response => response.json())
@@ -48,6 +49,8 @@ class API{
       })
 
   }
+
+
 
   // static fetchMyPlants(){
 

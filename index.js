@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     API.fetchAllPlants()
     // renderGarden(sampleGarden);
     
+    
    
     const samplePlant = new Plant({id:99, name: "Cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99});
     const samplePlant2 = new Plant({id:9, name: "Orchid", plant_type: "Flower", image:"https://assets.eflorist.com/assets/products/PHR_/TPL05-1A.jpg", water_level:6, garden_id: 1});
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const gardenerName = event.target.gardener_name.value
         // const submit = event.target.submit
         
-        
+        console.log(gardenerName)
         fetch(API.API_DATABASE_URL, {
         
           method: "POST",
@@ -80,15 +81,24 @@ document.addEventListener("DOMContentLoaded", function() {
         
         })
         .then(response => response.json())
-        .then(post => renderGarden(post))
+        .then(post =>{ 
+        
+        const newGarden = new Garden(post);
+        renderGarden(newGarden);
+        // debugger
+
+        console.log(post)
+        
+        }
+        )
         
         
-        
+        // debugger
           event.target.reset()
          
         
         })
-// debugger
+
 
 
 const gardenCollection = document.querySelector("#garden-collection")
@@ -148,7 +158,7 @@ gardenCollection.addEventListener("click", event =>{
         
         
         
-        debugger
+        // debugger
 
 
         // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
@@ -227,7 +237,7 @@ if (event.target.matches(".waterLevel-btn") ) {
  
     const newWaterLevel =  waterLevelNumber + 1
     
-    debugger
+    // debugger
 
     const id = event.target.dataset.id
     
@@ -256,18 +266,27 @@ if (event.target.matches(".waterLevel-btn") ) {
         
         
     })
+
+   
    
     
 }
 
 
-
+console.log(document.querySelectorAll("form.add-plant-form"))
     
+// cosnt plantForms = document.getElementsByClassName("add-plant-form");
+
+
+
+// debugger
+
+
 
 })
 
 
-   
+
 // debugger
 
 // newPlantForms.addEventListener("submit", event =>{ event.preventDefault();
