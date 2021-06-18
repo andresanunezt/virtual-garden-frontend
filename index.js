@@ -32,13 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     API.fetchAllGardens()
     API.fetchAllPlants()
-    renderGarden(sampleGarden);
+    // renderGarden(sampleGarden);
     
    
     const samplePlant = new Plant({id:99, name: "Cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99});
     const samplePlant2 = new Plant({id:9, name: "Orchid", plant_type: "Flower", image:"https://assets.eflorist.com/assets/products/PHR_/TPL05-1A.jpg", water_level:6, garden_id: 1});
     console.log(samplePlant2);
-    renderPlant(samplePlant);
+    // renderPlant(samplePlant);
     // renderPlant(samplePlant2);
 
 //    debugger
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const name = event.target.name.value
         const location = event.target.location.value
         const gardenerName = event.target.gardener_name.value
-        const submit = event.target.submit
+        // const submit = event.target.submit
         
         
         fetch(API.API_DATABASE_URL, {
@@ -115,7 +115,7 @@ gardenCollection.addEventListener("click", event =>{
     .then( 
         
         
-        // event.target.closest(".card").remove() 
+       
         
         gardenToDelete.remove()
         
@@ -139,7 +139,7 @@ gardenCollection.addEventListener("click", event =>{
     
     const id = event.target.dataset.id
     
-    // Make a PATCH/EDIT to   >  /toys/:id
+    
     const bodyObj = {
         
         likes: newLikes
@@ -166,7 +166,48 @@ gardenCollection.addEventListener("click", event =>{
     
 }
 
+if (event.target.matches(".waterLevel-btn") ) {   
+                       
+       
 
+    const pTagWithWaterLevel = event.target.closest(".card").querySelector("p")
+
+    
+    const waterLevelNumber = pTagWithWaterLevel.textContent[15]
+    const waterLevel = parseInt(waterLevelNumber)  
+ 
+    const newWaterLevel =  waterLevel + 1
+    
+    debugger
+
+    const id = event.target.dataset.id
+    
+    // Make a PATCH/EDIT to   >  /toys/:id
+    const bodyObj = {
+        
+        water_level: newWaterLevel
+        
+    } 
+    
+    
+    
+    
+    fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyObj),
+    })
+    .then(r => r.json())
+    .then(upDatedPlant => {
+        
+        console.log(upDatedPlant)
+       
+        pTagWithWaterLevel.textContent = `Water Level: ${upDatedPlant.water_level} `
+        
+    })
+   
+    
+}
     
     })
 
