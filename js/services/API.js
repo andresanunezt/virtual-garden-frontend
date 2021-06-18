@@ -49,6 +49,26 @@ class API{
 
   }
 
+  // static fetchMyPlants(){
+
+    
+  //   // const garden = document.getElementById(#data-owner)
+    
+
+  //   fetch(`${this.API_DATABASE_URL}/${gardenID}/plants`).then(response => response.json())
+  //   .then(fetchedArray => { console.log(fetchedArray);
+  
+      
+
+  //     fetchedArray.forEach(plant => {  console.log(plant) 
+        
+  //       const newPlant = new Prop(prop)
+  //      renderPlant(newPlant)
+      
+  //   }) 
+  
+  //   })
+
 
 }
 

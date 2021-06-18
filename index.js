@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const gardenFormContainer = document.querySelector(".container");
     
-
+   
+    // const newPlantForm = document.querySelector(".add-plant-form");
+    // debugger
     
     const formButton = document.querySelector("#new-garden-btn");
 
@@ -44,9 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
 //    debugger
 
 
-   
+    
+
      const newGardenForm = document.getElementById("add-garden-form");
     
+    //  debugger
+     
      console.log(newGardenForm);
 
      // const newGardenForm = document.getElementById("add-garden-form");
@@ -104,6 +109,7 @@ gardenCollection.addEventListener("click", event =>{
     
     const gardenToDelete = document.getElementById(id)
     
+    // debugger
     
     fetch(`${API.API_DATABASE_URL}/${id}`, {
         
@@ -123,7 +129,42 @@ gardenCollection.addEventListener("click", event =>{
         )        
         
      }
+    
+     if(event.target.matches(".dig-out-button")){   
+    
+        console.log(event.target) 
         
+        
+        const id = event.target.dataset.id;
+        
+        const plantToDelete = document.getElementById(id)
+        
+        const idNumber = parseInt(id)
+        
+        debugger
+
+        // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
+        
+        // debugger
+
+        fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
+            
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+            
+        })
+        .then(response => response.json())
+        .then(
+            
+            
+           
+            
+            plantToDeleteFrontend.remove()
+            
+        
+            )        
+            
+         }
 
      if (event.target.matches(".like-btn") ) {   
                        
@@ -178,11 +219,11 @@ if (event.target.matches(".waterLevel-btn") ) {
  
     const newWaterLevel =  waterLevel + 1
     
-    debugger
+    // debugger
 
     const id = event.target.dataset.id
     
-    // Make a PATCH/EDIT to   >  /toys/:id
+    
     const bodyObj = {
         
         water_level: newWaterLevel
@@ -198,24 +239,110 @@ if (event.target.matches(".waterLevel-btn") ) {
         body: JSON.stringify(bodyObj),
     })
     .then(r => r.json())
-    .then(upDatedPlant => {
+    .then(updatedPlant => {
         
-        console.log(upDatedPlant)
+        console.log(updatedPlant)
        
-        pTagWithWaterLevel.textContent = `Water Level: ${upDatedPlant.water_level} `
+        pTagWithWaterLevel.textContent = ` Water Level : ${updatedPlant.water_level}  `
+        
+        
         
     })
    
     
 }
-    
-    })
 
+
+  
+   })
+
+//    const newPlantForm = document.getElementById("add-plant-form");
+
+//    debugger
+
+//    newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
+
+
+//     const name = event.target.name.value
+//     const image = event.target.image.value
+//     const plantType = event.target.plantType.value
+//     const gardenID = event.target.gardenID.value
+
+//     fetch(API.PLANT_DATABASE_URL, {
+        
+//         method: "POST",
+//         headers: { "Content-Type": "application/json"},
+//         body: JSON.stringify({
+      
+//               "name": name,
+//               "plant_type": plantType,
+//               "image": image,
+//               "gardener_id": gardenID,
+//               "water_level": 0,
+                
+//         })
+      
+//       })
+//       .then(response => response.json())
+//       .then(post => renderPlant(post))
+      
+      
+      
+//         event.target.reset()
+
+    
+    
+    
+
+//     })
+
+//    debugger
 
 })
 
 
+//     const newPlantForm = document.getElementById("add-plant-form");
+
+//    debugger
+
+//    newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
+
+
+//     const name = event.target.name.value
+//     const image = event.target.image.value
+//     const plantType = event.target.plantType.value
+//     const gardenID = event.target.gardenID.value
+
+//     fetch(API.PLANT_DATABASE_URL, {
+        
+//         method: "POST",
+//         headers: { "Content-Type": "application/json"},
+//         body: JSON.stringify({
+      
+//               "name": name,
+//               "plant_type": plantType,
+//               "image": image,
+//               "gardener_id": gardenID,
+//               "water_level": 0,
+                
+//         })
+      
+//       })
+//       .then(response => response.json())
+//       .then(post => renderPlant(post))
+      
+      
+      
+//         event.target.reset()
+
     
+    
+    
+
+//     })
+
+//    debugger
+
 
 
 

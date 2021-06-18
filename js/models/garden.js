@@ -58,7 +58,7 @@ makeACard =(garden)=>{
       <h5>Plant Type:</h5>
       <input
         type="text"
-        name="plant_type"
+        name="plantType"
         value=""
         placeholder="Type"
         class="input-text"
@@ -77,14 +77,15 @@ makeACard =(garden)=>{
         type="submit"
         name="submit"
         value="Plant"
-        class="submit"
+        class="addPlant"
       />
     </form>
   </div>
-
+      <div data-garden="${garden.id}" class="plant-container">  
         <h2> Plants: </h2>
-        
+      </div>
         `
+
 
 
 }

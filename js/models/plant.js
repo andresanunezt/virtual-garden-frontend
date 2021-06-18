@@ -32,12 +32,12 @@ makePlantCard =(plant)=>{
     
     return `
 
-        <h4 id="name" data-id="${plant.gardenID}"> Plant Name: ${plant.name} </h4>
+        <h4 id="name" data-id="${plant.id}" data-owner="${plant.gardenID}"> Plant Name: ${plant.name} </h4>
         <img src= "${plant.image}" alt="plant" width="150" height="150">
         <h4 id="plantType"> Plant Type: ${plant.plantType} </h4>
         <p> Water Level : ${plant.waterLevel}  </p>
         <button data-id="${plant.id}" class="waterLevel-btn"> water+ </button>
-        <button data-id="${plant.id}" class="delete-btn"> dig out </button>
+        <button data-id="${plant.id}" class="dig-out-button"> dig out </button>
 
         
         `
@@ -54,11 +54,13 @@ renderPlant =(plant)=> {
     const cardDiv = document.createElement("div")
 
   
-    cardDiv.classList.add("card")
+    cardDiv.classList.add("plant-card")
  
     cardDiv.setAttribute("data-id", plant.gardenID)
+
+    cardDiv.setAttribute("data-owner", plant.gardenID)
     
-    cardDiv.id = plant.gardenID
+    cardDiv.id = plant.id
 
     cardDiv.innerHTML = makePlantCard(plant)
     //  debugger
@@ -67,12 +69,21 @@ renderPlant =(plant)=> {
     console.log(plant);
 
     const collectionDiv = document.getElementById(plant["gardenID"])
-    
-    // debugger
-    collectionDiv.append(cardDiv);
+
+    const plantIdNow = plant.gardenID;
+
+    const argumentForQS = "div[data-garden=" + `'${plantIdNow}'` + ']'
     
 
+    const plantCollectionDiv = document.querySelector(argumentForQS)
+    
     // debugger
+
+
+    plantCollectionDiv.append(cardDiv);
+    
+
+    debugger
     
 }
 
