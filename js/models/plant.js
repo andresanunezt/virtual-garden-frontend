@@ -37,7 +37,7 @@ makePlantCard =(plant)=>{
         <h4 id="plantType"> Plant Type: ${plant.plantType} </h4>
         <p> Water Level : ${plant.waterLevel}  </p>
         <button data-id="${plant.id}" class="waterLevel-btn"> water+ </button>
-        <button data-id="${plant.id}" class="dig-out-button"> dig out </button>
+        <button data-plant="${plant.id}" data-id="${plant.id}" class="dig-out-button"> dig out </button>
 
         
         `
@@ -56,7 +56,7 @@ renderPlant =(plant)=> {
   
     cardDiv.classList.add("plant-card")
  
-    cardDiv.setAttribute("data-id", plant.gardenID)
+    cardDiv.setAttribute("data-plant", plant.id)
 
     cardDiv.setAttribute("data-owner", plant.gardenID)
     

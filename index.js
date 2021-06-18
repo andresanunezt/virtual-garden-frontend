@@ -137,11 +137,19 @@ gardenCollection.addEventListener("click", event =>{
         
         const id = event.target.dataset.id;
         
-        const plantToDelete = document.getElementById(id)
-        
         const idNumber = parseInt(id)
         
-        // debugger
+        const argumentForQS = "div[data-plant=" + `'${id}'` + ']'
+    
+
+        const plantToDeleteFrontend = document.querySelector(argumentForQS)
+        
+        // const  = document.querySelector(id)
+        
+        
+        
+        debugger
+
 
         // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
         
