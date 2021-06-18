@@ -141,7 +141,7 @@ gardenCollection.addEventListener("click", event =>{
         
         const idNumber = parseInt(id)
         
-        debugger
+        // debugger
 
         // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
         
@@ -211,7 +211,7 @@ if (event.target.matches(".waterLevel-btn") ) {
                        
        
 
-    const pTagWithWaterLevel = event.target.closest(".card").querySelector("p")
+    const pTagWithWaterLevel = event.target.closest(".plant-card").querySelector("p")
 
     
     const waterLevelNumber = pTagWithWaterLevel.textContent[15]
@@ -219,7 +219,7 @@ if (event.target.matches(".waterLevel-btn") ) {
  
     const newWaterLevel =  waterLevel + 1
     
-    // debugger
+    debugger
 
     const id = event.target.dataset.id
     
@@ -256,45 +256,45 @@ if (event.target.matches(".waterLevel-btn") ) {
   
    })
 
-//    const newPlantForm = document.getElementById("add-plant-form");
+   const newPlantForm = document.getElementById("add-plant-form");
 
 //    debugger
 
-//    newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
+   newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
 
 
-//     const name = event.target.name.value
-//     const image = event.target.image.value
-//     const plantType = event.target.plantType.value
-//     const gardenID = event.target.gardenID.value
+    const name = event.target.name.value
+    const image = event.target.image.value
+    const plantType = event.target.plantType.value
+    const gardenID = event.target.gardenID.value
 
-//     fetch(API.PLANT_DATABASE_URL, {
+    fetch(API.PLANT_DATABASE_URL, {
         
-//         method: "POST",
-//         headers: { "Content-Type": "application/json"},
-//         body: JSON.stringify({
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({
       
-//               "name": name,
-//               "plant_type": plantType,
-//               "image": image,
-//               "gardener_id": gardenID,
-//               "water_level": 0,
+              "name": name,
+              "plant_type": plantType,
+              "image": image,
+              "gardener_id": gardenID,
+              "water_level": 0,
                 
-//         })
+        })
       
-//       })
-//       .then(response => response.json())
-//       .then(post => renderPlant(post))
+      })
+      .then(response => response.json())
+      .then(post => renderPlant(post))
       
       
       
-//         event.target.reset()
+        event.target.reset()
 
     
     
     
 
-//     })
+    })
 
 //    debugger
 

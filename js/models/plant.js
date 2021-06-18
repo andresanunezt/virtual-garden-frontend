@@ -83,7 +83,7 @@ renderPlant =(plant)=> {
     plantCollectionDiv.append(cardDiv);
     
 
-    debugger
+    // debugger
     
 }
 
