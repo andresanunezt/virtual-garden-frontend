@@ -43,55 +43,22 @@ makeACard =(garden)=>{
         <br>
         <br>
         <br>
-        <div class="container" style="text-align:center">
-    
-        <form class="add-plant-form" data-form="${garden.id}">
-        <h4> Add Plant to ${garden.name}</h4>
-        <input type="hidden" id="${garden.id}" name="gardenID" value="${garden.id}">
-        <h5>Name:</h5>
-        <input
-        type="text"
-        name="name"
-        value=""
-        placeholder="Plant Name"
-        class="input-text"
-        />
+        
+        <button data-id="${garden.id}" class="add-plant-btn"> Add Plant to ${garden.name} </button>
 
-      <h5>Plant Type:</h5>
-      <input
-        type="text"
-        name="plantType"
-        value=""
-        placeholder="Type"
-        class="input-text"
-      />
+        <div data-add-plant-form="${garden.id}" class="plant-container">  
+         
+        </div>
+        
 
-      <h5>Picture:</h5>
-      <input
-      type="text"
-      name="image"
-      value=""
-      placeholder="Add image"
-      class="input-text"
-      />
-
-      <input
-    
-        type="submit"
-        name="submit"
-        value="Plant"
-        class="addPlant"
-      />
-    </form>
-  </div>
-      <div data-garden="${garden.id}" class="plant-container">  
+        <div data-garden="${garden.id}" class="plant-container">  
         <h2> Plants: </h2>
       </div>
-        
-  `
+
+      
+`
 
 
-debugger
 }
 
 
@@ -111,6 +78,7 @@ renderGarden =(garden)=> {
     //  debugger
     console.log(garden);
 
+
     const collectionDiv = document.querySelector("#garden-collection");
     
     collectionDiv.append(cardDiv);
@@ -125,16 +93,6 @@ const sampleGarden = new Garden({id:99,name: "Bro's Garden", likes: 333, locatio
 console.log(sampleGarden);
  
  
-//  debugger
-// sampleGarden.renderGarden(sampleGarden)
- 
-// debugger
-
-
-
-
-
-// console.log(document.querySelector("#garden-collection"));
 
 
 

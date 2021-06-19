@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     API.fetchAllGardens()
     API.fetchAllPlants()
+    
     // renderGarden(sampleGarden);
     
     
@@ -273,9 +274,147 @@ if (event.target.matches(".waterLevel-btn") ) {
 }
 
 
-console.log(document.querySelectorAll("form.add-plant-form"))
+
+
+    if (event.target.matches("h2") || event.target.matches(".add-plant-btn")) {  
+                    
+   
+
+        const gardenCard = event.target.closest(".card")
+        const plantFormDiv = gardenCard.querySelector("div[data-add-plant-form]")
+        const cardEditingId = parseInt(gardenCard.id)
+        console.log(cardEditingId)
+
+
+    //   showTheForm = !showTheForm;
+
+    //   const argumentForQS = "div[data-add-plant-form=" + `'${garden.id}'` + ']'
     
-// cosnt plantForms = document.getElementsByClassName("add-plant-form");
+
+    // const plantFormDiv = document.querySelector(argumentForQS)
+
+    
+        const addPlantForm = document.createElement("form")
+        
+        addPlantForm.innerHTML =
+      
+        `
+        
+        <form class="add-plant-form" data-form="${cardEditingId}">
+                <input type="hidden" id="${cardEditingId}" name="gardenID" value="${cardEditingId}">
+                <h5>Name:</h5>
+                <input
+                type="text"
+                name="name"
+                value=""
+                placeholder="Plant Name"
+                class="input-text"
+                />
+        
+              <h5>Plant Type:</h5>
+              <input
+                type="text"
+                name="plantType"
+                value=""
+                placeholder="Type"
+                class="input-text"
+              />
+        
+              <h5>Picture:</h5>
+              <input
+              type="text"
+              name="image"
+              value=""
+              placeholder="Add image"
+              class="input-text"
+              />
+        <br>
+              <input
+            
+                type="submit"
+                name="submit"
+                value="Plant"
+                class="add-plant-submit"
+              />
+
+              <br>
+              <br>
+              <br>
+            <button class="close-button"> close</button>
+            </form>
+      
+              
+                
+          ` 
+
+          plantFormDiv.append(addPlantForm)
+       
+          const closeButton = addPlantForm.querySelector(".close-button")
+
+        
+          
+          closeButton.addEventListener("click", (event)=>{
+            
+            console.log(event)
+
+            addPlantForm.remove()
+        
+
+          })
+        
+        //   debugger
+
+          plantFormPlantButton = addPlantForm.submit
+        // plantFormDiv.append(addPlantForm)
+        plantFormPlantButton.addEventListener("click", (event)=>{  event.preventDefault();
+            //
+            debugger
+              if(event.target.matches(".add-plant-submit")){
+
+                let newPlantName = addPlantForm.name.value
+                    console.log(newPlantName)
+                let newPlantType = addPlantForm.plantType.value
+                    console.log(newPlantType)
+                let newPlantImage = addPlantForm.image.value
+                    console.log(newPlantImage)
+
+                   
+                const bodyObj = {
+
+                  name: newPlantName,
+                  plant_type: newPlantType,
+                  image: newPlantImage,
+                  garden_id: cardEditingId,
+                  water_level: 0
+
+                }
+
+                
+                
+                fetch(API.PLANT_DATABASE_URL, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(bodyObj),
+                })
+                .then(r => r.json())
+                .then(plant => {  
+                    console.log(plant)
+
+                    const newPlant = new Plant(plant);
+                    renderPlant(newPlant);
+                    // newPlantName.reset()
+                    // newPlantImage.reset()
+                    // newPlantType.reset()
+                    // debugger
+                })
+              }
+
+
+          })
+        
+      }
+
+    })
 
 
 
@@ -327,7 +466,7 @@ console.log(document.querySelectorAll("form.add-plant-form"))
     
 //    debugger
 
-})
+// })
 
 
 

@@ -21,13 +21,14 @@ class API{
 
             const newGarden = new Garden(garden)
             renderGarden(newGarden)
-           
-          
+            
+         
           }) 
       
         })
+    //     
 
-    }
+  }
 
 
     static fetchAllPlants() {
