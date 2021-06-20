@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const gardenFormContainer = document.querySelector(".container");
     
    
-    // const newPlantForm = document.querySelector(".add-plant-form");
-    // debugger
     
     const formButton = document.querySelector("#new-garden-btn");
 
@@ -34,39 +32,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     API.fetchAllGardens()
     API.fetchAllPlants()
-    
-    // renderGarden(sampleGarden);
-    
-    
-   
-    const samplePlant = new Plant({id:99, name: "Cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99});
-    const samplePlant2 = new Plant({id:9, name: "Orchid", plant_type: "Flower", image:"https://assets.eflorist.com/assets/products/PHR_/TPL05-1A.jpg", water_level:6, garden_id: 1});
-    console.log(samplePlant2);
-    // renderPlant(samplePlant);
-    // renderPlant(samplePlant2);
-
-//    debugger
-
-
-    
+        
 
      const newGardenForm = document.getElementById("add-garden-form");
-    
-    //  debugger
-     
-     console.log(newGardenForm);
-
-     // const newGardenForm = document.getElementById("add-garden-form");
+  
      newGardenForm.addEventListener("submit", event =>{ event.preventDefault();
-
-
 
         const name = event.target.name.value
         const location = event.target.location.value
         const gardenerName = event.target.gardener_name.value
-        // const submit = event.target.submit
         
-        console.log(gardenerName)
+        
+       
         fetch(API.API_DATABASE_URL, {
         
           method: "POST",
@@ -102,46 +79,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-const gardenCollection = document.querySelector("#garden-collection")
+      const gardenCollection = document.querySelector("#garden-collection")
 
+      gardenCollection.addEventListener("click", event =>{ event.preventDefault(); 
 
-
-gardenCollection.addEventListener("click", event =>{ 
+      if(event.target.matches(".delete-btn")){   
     
-    event.preventDefault(); 
-
-  
-  if(event.target.matches(".delete-btn")){   
+        const id = event.target.dataset.id
     
-    console.log(event.target) 
+        const gardenToDelete = document.getElementById(id)
     
-    
-    const id = event.target.dataset.id
-    
-    const gardenToDelete = document.getElementById(id)
-    
-    // debugger
-    
-    fetch(`${API.API_DATABASE_URL}/${id}`, {
-        
+        fetch(`${API.API_DATABASE_URL}/${id}`,{
         method: "DELETE",
         headers: { "Content-Type": "application/json" }
         
-    })
+        })
     .then(response => response.json())
-    .then( 
-        
-        
-       
-        
-        gardenToDelete.remove()
-        
-        
-        )        
+    .then(gardenToDelete.remove())        
         
      }
     
-     if(event.target.matches(".dig-out-button")){   
+     if(event.target.matches(".dig-out-button"))  {   
     
         console.log(event.target) 
         
@@ -175,9 +133,7 @@ gardenCollection.addEventListener("click", event =>{
         .then(response => response.json())
         .then(
             
-            
-           
-            
+          
             plantToDeleteFrontend.remove()
             
         
@@ -234,7 +190,7 @@ if (event.target.matches(".waterLevel-btn") ) {
 
     
     const waterLevelNumber = parseInt(pTagWithWaterLevel.innerText)
-    // const waterLevel = parseInt(waterLevelNumber)  
+   
  
     const newWaterLevel =  waterLevelNumber + 1
     
@@ -285,15 +241,6 @@ if (event.target.matches(".waterLevel-btn") ) {
         const cardEditingId = parseInt(gardenCard.id)
         console.log(cardEditingId)
 
-
-    //   showTheForm = !showTheForm;
-
-    //   const argumentForQS = "div[data-add-plant-form=" + `'${garden.id}'` + ']'
-    
-
-    // const plantFormDiv = document.querySelector(argumentForQS)
-
-    
         const addPlantForm = document.createElement("form")
         
         addPlantForm.innerHTML =
@@ -343,8 +290,7 @@ if (event.target.matches(".waterLevel-btn") ) {
             <button class="close-button"> close</button>
             </form>
       
-              
-                
+                  
           ` 
 
           plantFormDiv.append(addPlantForm)
@@ -353,7 +299,7 @@ if (event.target.matches(".waterLevel-btn") ) {
 
         
           
-          closeButton.addEventListener("click", (event)=>{
+            closeButton.addEventListener("click", (event)=>{
             
             console.log(event)
 
@@ -418,157 +364,10 @@ if (event.target.matches(".waterLevel-btn") ) {
 
 
 
-// debugger
+
 
 
 
 })
 
 
-
-// debugger
-
-// newPlantForms.addEventListener("submit", event =>{ event.preventDefault();
-
-// // debugger
-//         const name = event.target.name.value
-//         const image = event.target.image.value
-//         const plantType = event.target.plantType.value
-//         const gardenID = event.target.gardenID.value
-    
-//         fetch(API.PLANT_DATABASE_URL, {
-            
-//             method: "POST",
-//             headers: { "Content-Type": "application/json"},
-//             body: JSON.stringify({
-          
-//                   "name": name,
-//                   "plant_type": plantType,
-//                   "image": image,
-//                   "gardener_id": gardenID,
-//                   "water_level": 0,
-                    
-//             })
-          
-//           })
-//           .then(response => response.json())
-//           .then(post => renderPlant(post))
-          
-          
-          
-//             event.target.reset()
-    
-        
-        
-        
-    
-//         })
-    
-//    debugger
-
-// })
-
-
-
-
-
-// function plantFormSubmits(formArray) {
-
-//         formArray.array.forEach(form => {
-
-//         form.addEventListener("submit", event =>{ event.preventDefault();
-
-//     // debugger
-//             const name = event.target.name.value
-//             const image = event.target.image.value
-//             const plantType = event.target.plantType.value
-//             const gardenID = event.target.gardenID.value
-        
-//             fetch(API.PLANT_DATABASE_URL, {
-                
-//                 method: "POST",
-//                 headers: { "Content-Type": "application/json"},
-//                 body: JSON.stringify({
-              
-//                       "name": name,
-//                       "plant_type": plantType,
-//                       "image": image,
-//                       "gardener_id": gardenID,
-//                       "water_level": 0,
-                        
-//                 })
-              
-//               })
-//               .then(response => response.json())
-//               .then(post => renderPlant(post))
-              
-              
-              
-//                 event.target.reset()
-        
-            
-            
-            
-        
-//             })
-        
-            
-//         });
-
-
-
-
-
-
-
-  
-//Logic for plant form
-
-// if (event.target.matches(".addPlant") ) {
-
-//     console.log(event.path[1])
-
-//     const newPlantForm = event.path[1];
-
-//    debugger
-
-//    newPlantForm.addEventListener("submit", event =>{ event.preventDefault();
-
-//     console.log("EVENT HERE:", newPlantForm)
-    
-//     const name = event.target.name.value
-//     const image = event.target.image.value
-//     const plantType = event.target.plantType.value
-//     const gardenID = event.target.gardenID.value
-
-//     fetch(API.PLANT_DATABASE_URL, {
-        
-//         method: "POST",
-//         headers: { "Content-Type": "application/json"},
-//         body: JSON.stringify({
-      
-//               "name": name,
-//               "plant_type": plantType,
-//               "image": image,
-//               "gardener_id": gardenID,
-//               "water_level": 0,
-                
-//         })
-      
-//       })
-//       .then(response => response.json())
-//       .then(post => renderPlant(post))
-      
-      
-      
-//         event.target.reset()
-
-    
-    
-    
-
-//     })
-  
-//     debugger
-          
-//       }

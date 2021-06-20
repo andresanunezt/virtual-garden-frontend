@@ -31,14 +31,18 @@ makePlantCard =(plant)=>{
     //    debugger
     
     return `
-
+        <div class="plant-card-container" style="text-align:center">
         <h4 id="name" data-id="${plant.id}" data-owner="${plant.gardenID}"> Plant Name: ${plant.name} </h4>
-        <img src= "${plant.image}" alt="plant" width="150" height="150">
+        <span class="img-container">
+        <img src= "${plant.image}" alt="plant class="image"" width="150" height="200" class="center">
+        </span>
+        <div class="overlay" text-align: center>
         <h4 id="plantType"> Plant Type: ${plant.plantType} </h4>
         <h5> Water Level : </h5> <p>${plant.waterLevel}</p>
         <button data-id="${plant.id}" class="waterLevel-btn"> water+ </button>
         <button data-plant="${plant.id}" data-id="${plant.id}" class="dig-out-button"> dig out </button>
-
+        </div>
+        </div>
         
         `
 
