@@ -1,9 +1,5 @@
 class API{
 
-
-  
-
-
  
     static API_DATABASE_URL = "http://localhost:3000/gardens"
     static PLANT_DATABASE_URL = "http://localhost:3000/plants"

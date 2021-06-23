@@ -23,7 +23,7 @@ body { background-color: forestgreen; }
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #008CBA;
+    background-color: khaki;
   }
   
   .plant-card-container:hover:hover .overlay {
@@ -45,7 +45,7 @@ body { background-color: forestgreen; }
     /* margin-left: auto;
     margin-right: auto;
     width: 50%; */
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   img-container {
@@ -61,3 +61,5 @@ body { background-color: forestgreen; }
         flex-wrap: wrap;
     
   }
+
+  /* div. {display: inline-block;} */

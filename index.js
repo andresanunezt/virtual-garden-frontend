@@ -229,13 +229,20 @@ if (event.target.matches(".waterLevel-btn") ) {
     
 }
 
-
-
-
-    if (event.target.matches("h2") || event.target.matches(".add-plant-btn")) {  
-                    
    
 
+    if (event.target.matches(".add-plant-btn")) {  
+          
+      
+
+      addPlantButton = () => event.target
+      
+       addPlantButton().disabled = true;
+      
+      
+   
+       
+        
         const gardenCard = event.target.closest(".card")
         const plantFormDiv = gardenCard.querySelector("div[data-add-plant-form]")
         const cardEditingId = parseInt(gardenCard.id)
@@ -304,7 +311,9 @@ if (event.target.matches(".waterLevel-btn") ) {
             console.log(event)
 
             addPlantForm.remove()
-        
+            
+            addPlantButton().disabled = false
+            // debugger
 
           })
         
