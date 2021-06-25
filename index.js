@@ -323,7 +323,7 @@ if (event.target.matches(".waterLevel-btn") ) {
         // plantFormDiv.append(addPlantForm)
         plantFormPlantButton.addEventListener("click", (event)=>{  event.preventDefault();
             //
-            debugger
+            // debugger
               if(event.target.matches(".add-plant-submit")){
 
                 let newPlantName = addPlantForm.name.value
@@ -357,11 +357,13 @@ if (event.target.matches(".waterLevel-btn") ) {
 
                     const newPlant = new Plant(plant);
                     renderPlant(newPlant);
-                    // newPlantName.reset()
-                    // newPlantImage.reset()
-                    // newPlantType.reset()
-                    // debugger
+                    addPlantForm.name.value = ""
+                    addPlantForm.plantType.value = ""
+                    addPlantForm.image.value = ""
+                    
                 })
+                
+                debugger
               }
 
 
