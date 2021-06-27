@@ -42,33 +42,42 @@ document.addEventListener("DOMContentLoaded", function() {
         const location = event.target.location.value
         const gardenerName = event.target.gardener_name.value
         
-        
-       
-        fetch(API.API_DATABASE_URL, {
-        
-          method: "POST",
-          headers: { "Content-Type": "application/json"},
-          body: JSON.stringify({
-        
-                "name": name,
-                "location": location,
-                "gardener_name": gardenerName,
-                "likes": 0,
-                  
-          })
-        
-        })
-        .then(response => response.json())
-        .then(post =>{ 
-        
-        const newGarden = new Garden(post);
-        renderGarden(newGarden);
-        // debugger
+        const bodyObj = {
 
-        console.log(post)
-        
+          name: name,
+          location: location,
+          gardener_name: gardenerName,
+          likes: 0
+
         }
-        )
+
+        API.gardenPostFetch(bodyObj);
+       
+        // fetch(API.API_DATABASE_URL, {
+        
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json"},
+        //   body: JSON.stringify({
+        
+        //         "name": name,
+        //         "location": location,
+        //         "gardener_name": gardenerName,
+        //         "likes": 0,
+                  
+        //   })
+        
+        // })
+        // .then(response => response.json())
+        // .then(post =>{ 
+        
+        // const newGarden = new Garden(post);
+        // renderGarden(newGarden);
+        // // debugger
+
+        // console.log(post)
+        
+        // }
+        // )
         
         
         // debugger
@@ -88,14 +97,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const id = event.target.dataset.id
     
         const gardenToDelete = document.getElementById(id)
+
+        API.deleteGardenFetch(id, gardenToDelete)
     
-        fetch(`${API.API_DATABASE_URL}/${id}`,{
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
+    //     fetch(`${API.API_DATABASE_URL}/${id}`,{
+    //     method: "DELETE",
+    //     headers: { "Content-Type": "application/json" }
         
-        })
-    .then(response => response.json())
-    .then(gardenToDelete.remove())        
+    //     })
+    // .then(response => response.text())
+    // .then(gardenToDelete.remove())        
         
      }
     
@@ -108,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const idNumber = parseInt(id)
         
-        const argumentForQS = "div[data-plant=" + `'${id}'` + ']'
+        const argumentForQS = "div[data-plant=" + `'${idNumber}'` + ']'
     
 
         const plantToDeleteFrontend = document.querySelector(argumentForQS)
@@ -116,28 +127,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // const  = document.querySelector(id)
         
         
-        
+        API.deletePlantFetch(idNumber, plantToDeleteFrontend)
         // debugger
-
-
         // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
-        
-        // debugger
-
-        fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
-            
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" }
-            
-        })
-        .then(response => response.json())
-        .then(
-            
-          
-            plantToDeleteFrontend.remove()
-            
-        
-            )        
+         // debugger
+         // fetch(`${API.PLANT_DATABASE_URL}/${idNumber}`, {
+        //     method: "DELETE",
+        //     headers: { "Content-Type": "application/json" }    
+        // })
+        // .then(response => response.text())
+        // .then(
+        //     plantToDeleteFrontend.remove()
+        //     )        
             
          }
 
@@ -164,20 +165,20 @@ document.addEventListener("DOMContentLoaded", function() {
     
     
     
-    
-    fetch(`${API.API_DATABASE_URL}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyObj),
-    })
-    .then(r => r.json())
-    .then(updatedGarden => {
+    API.gardenLikesPatchFetch(id, bodyObj, pTagWithLikes)
+    // fetch(`${API.API_DATABASE_URL}/${id}`, {
+    //     method: "PATCH",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(bodyObj),
+    // })
+    // .then(r => r.json())
+    // .then(updatedGarden => {
         
-        console.log(updatedGarden)
+    //     console.log(updatedGarden)
        
-        pTagWithLikes.textContent = `${updatedGarden.likes} rakes up`
+    //     pTagWithLikes.textContent = `${updatedGarden.likes} rakes up`
         
-    })
+    // })
    
     
 }
@@ -206,23 +207,24 @@ if (event.target.matches(".waterLevel-btn") ) {
     } 
     
     
+    API.plantWaterLevelPatchFetch(id, bodyObj, pTagWithWaterLevel)
     
     
-    fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bodyObj),
-    })
-    .then(r => r.json())
-    .then(updatedPlant => {
+    // fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
+    //     method: "PATCH",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(bodyObj),
+    // })
+    // .then(r => r.json())
+    // .then(updatedPlant => {
         
-        console.log(updatedPlant)
+    //     console.log(updatedPlant)
        
-        pTagWithWaterLevel.textContent = `${updatedPlant.water_level}`
+    //     pTagWithWaterLevel.textContent = `${updatedPlant.water_level}`
         
         
         
-    })
+    // })
 
    
    
@@ -290,7 +292,6 @@ if (event.target.matches(".waterLevel-btn") ) {
                 value="Plant"
                 class="add-plant-submit"
               />
-
               <br>
               <br>
               <br>
@@ -321,7 +322,7 @@ if (event.target.matches(".waterLevel-btn") ) {
 
           plantFormPlantButton = addPlantForm.submit
         // plantFormDiv.append(addPlantForm)
-        plantFormPlantButton.addEventListener("click", (event)=>{  event.preventDefault();
+          plantFormPlantButton.addEventListener("click", (event)=>{  event.preventDefault();
             //
             // debugger
               if(event.target.matches(".add-plant-submit")){
@@ -345,23 +346,23 @@ if (event.target.matches(".waterLevel-btn") ) {
                 }
 
                 
-                
-                fetch(API.PLANT_DATABASE_URL, {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(bodyObj),
-                })
-                .then(r => r.json())
-                .then(plant => {  
-                    console.log(plant)
+                API.plantPostFetch(addPlantForm,bodyObj)
+                // fetch(API.PLANT_DATABASE_URL, {
+                //   method: "POST",
+                //   headers: { "Content-Type": "application/json" },
+                //   body: JSON.stringify(bodyObj),
+                // })
+                // .then(r => r.json())
+                // .then(plant => {  
+                //     console.log(plant)
 
-                    const newPlant = new Plant(plant);
-                    renderPlant(newPlant);
-                    addPlantForm.name.value = ""
-                    addPlantForm.plantType.value = ""
-                    addPlantForm.image.value = ""
+                //     const newPlant = new Plant(plant);
+                //     renderPlant(newPlant);
+                //     addPlantForm.name.value = ""
+                //     addPlantForm.plantType.value = ""
+                //     addPlantForm.image.value = ""
                     
-                })
+                // })
                 
                 debugger
               }
@@ -380,5 +381,3 @@ if (event.target.matches(".waterLevel-btn") ) {
 
 
 })
-
-
