@@ -17,7 +17,7 @@ class Garden{
 
         Garden.all.push(this)
         
-        // debugger
+       
      
     }
 
@@ -27,7 +27,7 @@ class Garden{
 
 
 makeACard =(garden)=>{ 
-    //    debugger
+   
     
     return `
         <br>

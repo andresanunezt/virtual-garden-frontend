@@ -125,7 +125,7 @@ class API{
   }
 
  
-static gardenLikesPatchFetch(id,bodyObj, pTagWithLikes) {
+static gardenLikesPatchFetch(id, bodyObj, pTagWithLikes) {
   
   fetch(`${this.API_DATABASE_URL}/${id}`, {
     method: "PATCH",

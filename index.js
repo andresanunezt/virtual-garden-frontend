@@ -21,10 +21,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
-      API.fetchAllGardens()
-      // setTimeout(API.fetchAllGardens(),4000)
-      
-      setTimeout(API.fetchAllPlants(),10000)
+      API.fetchAllGardens();
+
+      // API.fetchAllPlants();
+     
+      // debugger
+      setTimeout(function(){API.fetchAllPlants();}, 1000);
         
 
       const newGardenForm = document.getElementById("add-garden-form");

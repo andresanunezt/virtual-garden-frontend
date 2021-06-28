@@ -5,7 +5,7 @@ class Plant {
    
 
 
-    constructor({id, name, plant_type , image, garden_id, water_level}){
+    constructor({id, name, plant_type , image, garden_id, water_level}) {
    
         
 
@@ -21,14 +21,11 @@ class Plant {
      
     }
 
-
-
 }
 
 
 
 makePlantCard =(plant)=>{ 
-    //    debugger
     
     return `
         <div class="plant-card-container" style="text-align:center">
@@ -53,20 +50,10 @@ makePlantCard =(plant)=>{
 renderPlant =(plant)=> {  
 
 
-    
-
     const cardDiv = document.createElement("div")
-
   
     cardDiv.classList.add("plant-card")
  
-
-
-
-
-
-
-
     cardDiv.setAttribute("data-plant", plant.id)
 
     cardDiv.setAttribute("data-owner", plant.gardenID)
@@ -74,13 +61,10 @@ renderPlant =(plant)=> {
     cardDiv.id = plant.id
 
     cardDiv.innerHTML = makePlantCard(plant)
-    //  debugger
-   
     
     console.log(plant);
 
-    const collectionDiv = document.getElementById(plant["gardenID"])
-
+    
     const plantIdNow = plant.gardenID;
 
     const argumentForQS = "div[data-garden=" + `'${plantIdNow}'` + ']'
@@ -88,20 +72,12 @@ renderPlant =(plant)=> {
 
     const plantCollectionDiv = document.querySelector(argumentForQS)
     
-    // debugger
-
-
     plantCollectionDiv.append(cardDiv);
     
-
-    // debugger
     
 }
 
 
-// const samplePlant = new Plant({id:99, name: "Cempasuchil", plant_type: "Flower", image:"https://static.educalingo.com/img/es/800/tagetes-erecta.jpg", water_level:3, garden_id: 99});
-// const samplePlant2 = new Plant({id:9, name: "Orchid", plant_type: "Flower", image:"https://assets.eflorist.com/assets/products/PHR_/TPL05-1A.jpg", water_level:6, garden_id: 1});
-// console.log(samplePlant2);
 
 
 
