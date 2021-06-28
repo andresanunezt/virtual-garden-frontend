@@ -36,7 +36,7 @@ makeACard =(garden)=>{
         <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
         <h3 id="location"> Location: ${garden.location} </h3>
         <h3> Gardener: ${garden.gardenerName}</h3>
-        <p> ${garden.likes} Rakes Up </p>
+        <p>${garden.likes} likes</p>
         <button data-id="${garden.id}" class="like-btn"> I Like</button>
         <button data-id="${garden.id}" class="delete-btn"> Delete </button>
        
@@ -88,9 +88,7 @@ renderGarden =(garden)=> {
 }
 
 
-const sampleGarden = new Garden({id:99,name: "Bro's Garden", likes: 333, location: "Home", gardener_name: "Bro"})
 
-console.log(sampleGarden);
  
  
 

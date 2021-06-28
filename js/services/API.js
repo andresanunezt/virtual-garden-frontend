@@ -1,7 +1,7 @@
 class API{
 
- 
     static API_DATABASE_URL = "http://localhost:3000/gardens"
+    
     static PLANT_DATABASE_URL = "http://localhost:3000/plants"
     
     static fetchAllGardens() {
@@ -9,44 +9,35 @@ class API{
         fetch(this.API_DATABASE_URL).then(response => response.json())
         .then(fetchedArray => { console.log(fetchedArray);
           
-          
-          
-          fetchedArray.forEach(garden => {  
-            
-            console.log(garden) 
+        
 
-            const newGarden = new Garden(garden)
-            renderGarden(newGarden)
+        fetchedArray.forEach(garden => {  
+            
+        console.log(garden) 
+        
+        const newGarden = new Garden(garden)
+        renderGarden(newGarden)
             
          
-          }) 
-      
+          })
         })
-    //     
-
-  }
-
+    }
 
     static fetchAllPlants() {
 
       fetch(this.PLANT_DATABASE_URL).then(response => response.json())
       .then(fetchedArray => { console.log(fetchedArray);
-        
-        // renderPlant(samplePlant2);
-        
-        fetchedArray.forEach(plant => {  
-          
-          console.log(plant) 
-
-          const newPlant = new Plant(plant)
-          renderPlant(newPlant)
-        
-        }) 
-    
       
-      })
+      fetchedArray.forEach(plant => {  
+          
+      console.log(plant) 
 
-  }
+      const newPlant = new Plant(plant)
+      renderPlant(newPlant)
+        
+          }) 
+        })
+      }
 
 
   static gardenPostFetch(bodyObj) {
@@ -63,7 +54,7 @@ class API{
     
     const newGarden = new Garden(post);
     renderGarden(newGarden);
-    // debugger
+    
 
     console.log(post)
     
@@ -93,17 +84,20 @@ class API{
   }
 
 
-  static deleteGardenFetch(id,gardenToDelete) {
+  static deleteGardenFetch(idNumber,gardenToDelete) {
 
-    fetch(`${this.API_DATABASE_URL}/${id}`,{
+    fetch(`${this.API_DATABASE_URL}/${idNumber}`,{
       method: "DELETE",
       headers: { "Content-Type": "application/json" }
       
       })
       .then(response => response.text())
-      .then(gardenToDelete.remove())  
+      .then(resp =>
+        console.log(resp),
+        gardenToDelete.remove()
+        )  
 
-
+ 
   }
 
   static deletePlantFetch(idNumber, plantToDeleteFrontend) {
@@ -130,25 +124,7 @@ class API{
 
   }
 
-  // static plantPostFetch(bodyObj,addPlantForm) {
-  
-  //   fetch(API.PLANT_DATABASE_URL, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(bodyObj),
-  //   })
-  // .then(r => r.json())
-  // .then(plant => {  
-  //       console.log(plant)
-
-  //       const newPlant = new Plant(plant);
-  //       renderPlant(newPlant);
-  //       addPlantForm.name.value = ""
-  //       addPlantForm.plantType.value = ""
-  //       addPlantForm.image.value = ""
-      
-  //     })
-  // }
+ 
 static gardenLikesPatchFetch(id,bodyObj, pTagWithLikes) {
   
   fetch(`${this.API_DATABASE_URL}/${id}`, {
@@ -161,7 +137,7 @@ static gardenLikesPatchFetch(id,bodyObj, pTagWithLikes) {
     
     console.log(updatedGarden)
    
-    pTagWithLikes.textContent = `${updatedGarden.likes} rakes up`
+    pTagWithLikes.textContent = `${updatedGarden.likes} likes`
     
   })
 
@@ -181,15 +157,9 @@ static plantWaterLevelPatchFetch(id, bodyObj, pTagWithWaterLevel) {
     console.log(updatedPlant)
    
     pTagWithWaterLevel.textContent = `${updatedPlant.water_level}`
-    
-    
-    
+      
 })
 }
 
 }
 
-// API.fetchAllGardens()
-// API.fetchAllPlants()
-// renderGarden(sampleGarden);
-// renderPlant(samplePlant);

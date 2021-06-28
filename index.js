@@ -2,14 +2,9 @@ document.addEventListener("click", (event)=>{ console.log(" Clicked on == ", eve
 
 let showTheForm = false;
 
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
 
     const gardenFormContainer = document.querySelector(".container");
-    
-   
     
     const formButton = document.querySelector("#new-garden-btn");
 
@@ -17,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         
         showTheForm = !showTheForm;
-       
-
        
         if (showTheForm) {
         gardenFormContainer.style.display = "block";
@@ -28,19 +21,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
-
-
-    API.fetchAllGardens()
-    API.fetchAllPlants()
+      API.fetchAllGardens()
+      // setTimeout(API.fetchAllGardens(),4000)
+      
+      setTimeout(API.fetchAllPlants(),10000)
         
 
-     const newGardenForm = document.getElementById("add-garden-form");
+      const newGardenForm = document.getElementById("add-garden-form");
   
-     newGardenForm.addEventListener("submit", event =>{ event.preventDefault();
+      
+  newGardenForm.addEventListener("submit", event =>{ event.preventDefault();
 
-        const name = event.target.name.value
-        const location = event.target.location.value
-        const gardenerName = event.target.gardener_name.value
+      const name = event.target.name.value
+      const location = event.target.location.value
+      const gardenerName = event.target.gardener_name.value
         
         const bodyObj = {
 
@@ -53,67 +47,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
         API.gardenPostFetch(bodyObj);
        
-        // fetch(API.API_DATABASE_URL, {
-        
-        //   method: "POST",
-        //   headers: { "Content-Type": "application/json"},
-        //   body: JSON.stringify({
-        
-        //         "name": name,
-        //         "location": location,
-        //         "gardener_name": gardenerName,
-        //         "likes": 0,
-                  
-        //   })
-        
-        // })
-        // .then(response => response.json())
-        // .then(post =>{ 
-        
-        // const newGarden = new Garden(post);
-        // renderGarden(newGarden);
-        // // debugger
-
-        // console.log(post)
-        
-        // }
-        // )
-        
-        
-        // debugger
-          event.target.reset()
+        event.target.reset()
          
         
         })
 
 
 
-      const gardenCollection = document.querySelector("#garden-collection")
+  const gardenCollection = document.querySelector("#garden-collection")
 
-      gardenCollection.addEventListener("click", event =>{ event.preventDefault(); 
+  gardenCollection.addEventListener("click", event =>{ event.preventDefault(); 
 
-      if(event.target.matches(".delete-btn")){   
+      if(event.target.matches(".delete-btn")) {   
     
-        const id = event.target.dataset.id
-    
-        const gardenToDelete = document.getElementById(id)
-
-        API.deleteGardenFetch(id, gardenToDelete)
-    
-    //     fetch(`${API.API_DATABASE_URL}/${id}`,{
-    //     method: "DELETE",
-    //     headers: { "Content-Type": "application/json" }
+        const id = event.target.dataset.id;
         
-    //     })
-    // .then(response => response.text())
-    // .then(gardenToDelete.remove())        
-        
-     }
+        const idNumber = parseInt(id);
     
-     if(event.target.matches(".dig-out-button"))  {   
+        const argumentForQS = "div[data-id=" + `'${idNumber}'` + ']'
+    
+        const gardenToDelete = document.querySelector(argumentForQS)
+
+        
+        API.deleteGardenFetch(idNumber, gardenToDelete)
+           
+      }
+    
+      if(event.target.matches(".dig-out-button")) {   
     
         console.log(event.target) 
-        
         
         const id = event.target.dataset.id;
         
@@ -121,130 +83,61 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const argumentForQS = "div[data-plant=" + `'${idNumber}'` + ']'
     
-
         const plantToDeleteFrontend = document.querySelector(argumentForQS)
         
-        // const  = document.querySelector(id)
-        
-        
+      
         API.deletePlantFetch(idNumber, plantToDeleteFrontend)
-        // debugger
-        // const plantToDeleteFrontend = document.querySelector(idNumber).getElementsByClassName("plant-card")[0];
-         // debugger
-         // fetch(`${API.PLANT_DATABASE_URL}/${idNumber}`, {
-        //     method: "DELETE",
-        //     headers: { "Content-Type": "application/json" }    
-        // })
-        // .then(response => response.text())
-        // .then(
-        //     plantToDeleteFrontend.remove()
-        //     )        
-            
-         }
+                  
+      
+      }
 
-     if (event.target.matches(".like-btn") ) {   
+      if (event.target.matches(".like-btn") ) {   
                        
-       
-
-    const pTagWithLikes = event.target.closest(".card").querySelector("p")
-
-    // debugger
-    
-    const likeCount = parseInt(pTagWithLikes.textContent)  
+       const pTagWithLikes = event.target.closest(".card").querySelector("p")
+      
+       const likeCount = parseInt(pTagWithLikes.textContent)  
  
-    const newLikes =  likeCount + 1
+       const newLikes =  likeCount + 1
     
-    const id = event.target.dataset.id
+       const id = event.target.dataset.id
     
-    
-    const bodyObj = {
+        const bodyObj = {
         
-        likes: newLikes
+          likes: newLikes
         
-    } 
+        } 
     
+        API.gardenLikesPatchFetch(id, bodyObj, pTagWithLikes)
     
-    
-    API.gardenLikesPatchFetch(id, bodyObj, pTagWithLikes)
-    // fetch(`${API.API_DATABASE_URL}/${id}`, {
-    //     method: "PATCH",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(bodyObj),
-    // })
-    // .then(r => r.json())
-    // .then(updatedGarden => {
-        
-    //     console.log(updatedGarden)
-       
-    //     pTagWithLikes.textContent = `${updatedGarden.likes} rakes up`
-        
-    // })
-   
-    
-}
+      }
 
-if (event.target.matches(".waterLevel-btn") ) {   
+      if (event.target.matches(".waterLevel-btn") ) {   
                        
-       
+        const pTagWithWaterLevel = event.target.closest(".plant-card").querySelector("p")
 
-    const pTagWithWaterLevel = event.target.closest(".plant-card").querySelector("p")
-
-    
-    const waterLevelNumber = parseInt(pTagWithWaterLevel.innerText)
+        const waterLevelNumber = parseInt(pTagWithWaterLevel.innerText)
    
- 
-    const newWaterLevel =  waterLevelNumber + 1
+        const newWaterLevel =  waterLevelNumber + 1
+      
+        const id = event.target.dataset.id
     
-    // debugger
-
-    const id = event.target.dataset.id
-    
-    
-    const bodyObj = {
+        const bodyObj = {
         
         water_level: newWaterLevel
         
-    } 
+        } 
     
+        API.plantWaterLevelPatchFetch(id, bodyObj, pTagWithWaterLevel)
     
-    API.plantWaterLevelPatchFetch(id, bodyObj, pTagWithWaterLevel)
-    
-    
-    // fetch(`${API.PLANT_DATABASE_URL}/${id}`, {
-    //     method: "PATCH",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(bodyObj),
-    // })
-    // .then(r => r.json())
-    // .then(updatedPlant => {
-        
-    //     console.log(updatedPlant)
-       
-    //     pTagWithWaterLevel.textContent = `${updatedPlant.water_level}`
-        
-        
-        
-    // })
+      
+      }
 
-   
-   
-    
-}
-
-   
-
-    if (event.target.matches(".add-plant-btn")) {  
+      if (event.target.matches(".add-plant-btn")) {  
           
+        addPlantButton = () => event.target
       
-
-      addPlantButton = () => event.target
-      
-       addPlantButton().disabled = true;
-      
-      
-   
-       
-        
+        addPlantButton().disabled = true;
+         
         const gardenCard = event.target.closest(".card")
         const plantFormDiv = gardenCard.querySelector("div[data-add-plant-form]")
         const cardEditingId = parseInt(gardenCard.id)
@@ -306,8 +199,7 @@ if (event.target.matches(".waterLevel-btn") ) {
           const closeButton = addPlantForm.querySelector(".close-button")
 
         
-          
-            closeButton.addEventListener("click", (event)=>{
+  closeButton.addEventListener("click", (event)=>{
             
             console.log(event)
 
@@ -345,38 +237,19 @@ if (event.target.matches(".waterLevel-btn") ) {
 
                 }
 
-                
-                API.plantPostFetch(addPlantForm,bodyObj)
-                // fetch(API.PLANT_DATABASE_URL, {
-                //   method: "POST",
-                //   headers: { "Content-Type": "application/json" },
-                //   body: JSON.stringify(bodyObj),
-                // })
-                // .then(r => r.json())
-                // .then(plant => {  
-                //     console.log(plant)
-
-                //     const newPlant = new Plant(plant);
-                //     renderPlant(newPlant);
-                //     addPlantForm.name.value = ""
-                //     addPlantForm.plantType.value = ""
-                //     addPlantForm.image.value = ""
-                    
-                // })
-                
-                debugger
+              API.plantPostFetch(addPlantForm,bodyObj)
+              
               }
 
 
           })
         
+      
+        
+        
       }
 
     })
-
-
-
-
 
 
 
