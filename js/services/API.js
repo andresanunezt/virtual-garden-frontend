@@ -16,11 +16,12 @@ class API{
         console.log(garden) 
         
         const newGarden = new Garden(garden)
-        renderGarden(newGarden)
+        newGarden.renderGarden()
             
          
           })
         })
+        
     }
 
     static fetchAllPlants() {
@@ -53,7 +54,8 @@ class API{
     .then(post =>{ 
     
     const newGarden = new Garden(post);
-    renderGarden(newGarden);
+    
+    newGarden.renderGarden();
     
 
     console.log(post)
