@@ -60,9 +60,9 @@ class API {
       .then((r) => r.json())
       .then((plant) => {
         console.log(plant);
-
-        const newPlant = new Plant(plant);
-        renderPlant(newPlant);
+        new Plant(plant);
+        // const newPlant = new Plant(plant);
+        // renderPlant(newPlant);
         addPlantForm.name.value = "";
         addPlantForm.plantType.value = "";
         addPlantForm.image.value = "";
