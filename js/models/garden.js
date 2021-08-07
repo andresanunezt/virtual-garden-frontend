@@ -1,30 +1,18 @@
-class Garden{
+class Garden {
+  static all = [];
 
+  constructor({ id, name, likes, location, gardener_name }) {
+    (this.id = id),
+      (this.name = name),
+      (this.gardenerName = gardener_name),
+      (this.likes = likes),
+      (this.location = location),
+      this.renderGarden(),
+      Garden.all.push(this);
+  }
 
-    static all = []
-   
-
-
-    
-    constructor({id, name, likes, location, gardener_name}){
-   
-
-        this.id = id,
-        this.name = name,
-        this.gardenerName = gardener_name,
-        this.likes = likes,
-        this.location = location,
-
-        Garden.all.push(this)
-        
-       
-     
-    }
-
-    makeACard =()=>{ 
-   
-    
-        return `
+  makeACard = () => {
+    return `
             <br>
             <h5> -------------------------------- </h5>
             <br>
@@ -34,11 +22,9 @@ class Garden{
             <p>${this.likes} likes</p>
             <button data-id="${this.id}" class="like-btn"> I Like</button>
             <button data-id="${this.id}" class="delete-btn"> Delete </button>
-           
             <br>
             <br>
             <br>
-            
             <button data-id="${this.id}" class="add-plant-btn"> Add Plant to ${this.name} </button>
     
             <div data-add-plant-form="${this.id}" class="plant-container">  
@@ -51,42 +37,30 @@ class Garden{
           </div>
     
           
-    `
-    
-    
-    }
+    `;
+  };
 
-    renderGarden =()=> {  
+  renderGarden = () => {
+    const cardDiv = document.createElement("div");
 
-    
-        const cardDiv = document.createElement("div")
-    
-        cardDiv.classList.add("card")
-     
-        cardDiv.setAttribute("data-id", this.id)
-        
-        cardDiv.id = this.id
-    
-        cardDiv.innerHTML = this.makeACard()
-        //  debugger
-        console.log(this);
-    
-    
-        const collectionDiv = document.querySelector("#garden-collection");
-        
-        collectionDiv.append(cardDiv);
-        
-        // debugger
-        
-    }
-    
+    cardDiv.classList.add("card");
 
+    cardDiv.setAttribute("data-id", this.id);
+
+    cardDiv.id = this.id;
+
+    cardDiv.innerHTML = this.makeACard();
+
+    const collectionDiv = document.querySelector("#garden-collection");
+
+    collectionDiv.append(cardDiv);
+
+    // debugger
+  };
 }
 
+// makeACard =(garden)=>{
 
-// makeACard =(garden)=>{ 
-   
-    
 //     return `
 //         <br>
 //         <h5> -------------------------------- </h5>
@@ -97,58 +71,43 @@ class Garden{
 //         <p>${garden.likes} likes</p>
 //         <button data-id="${garden.id}" class="like-btn"> I Like</button>
 //         <button data-id="${garden.id}" class="delete-btn"> Delete </button>
-       
+
 //         <br>
 //         <br>
 //         <br>
-        
+
 //         <button data-id="${garden.id}" class="add-plant-btn"> Add Plant to ${garden.name} </button>
 
-//         <div data-add-plant-form="${garden.id}" class="plant-container">  
-         
-//         </div>
-        
+//         <div data-add-plant-form="${garden.id}" class="plant-container">
 
-//         <div data-garden="${garden.id}" class="plant-container">  
+//         </div>
+
+//         <div data-garden="${garden.id}" class="plant-container">
 //         <h2> Plants: </h2>
 //       </div>
 
-      
 // `
-
 
 // }
 
+// renderGarden =(garden)=> {
 
-
-// renderGarden =(garden)=> {  
-
-    
 //     const cardDiv = document.createElement("div")
 
 //     cardDiv.classList.add("card")
- 
+
 //     cardDiv.setAttribute("data-id", garden.id)
-    
+
 //     cardDiv.id = garden.id
 
 //     cardDiv.innerHTML = makeACard(garden)
 //     //  debugger
 //     console.log(garden);
 
-
 //     const collectionDiv = document.querySelector("#garden-collection");
-    
+
 //     collectionDiv.append(cardDiv);
-    
+
 //     // debugger
-    
+
 // }
-
-
-
- 
- 
-
-
-
