@@ -26,9 +26,10 @@ class API {
 
         fetchedArray.forEach((plant) => {
           console.log(plant);
-
-          const newPlant = new Plant(plant);
-          renderPlant(newPlant);
+          new Plant(plant);
+          // const newPlant = new Plant(plant);
+          // renderPlant(newPlant);
+          // newPlant.renderPlant();
         });
       });
   }
