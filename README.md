@@ -1,7 +1,5 @@
 # Green Thumbs Frontend
 
-This application was designed to work in conjuction with the following [backend/API](https://github.com/andresanunezt/virtual-garden-backend).
-
 Green Thumbs is a virtual garden single page application. Users can create a gardens and add plants to each respective garden.
 
 Check out the [DEMO VIDEO](https://www.youtube.com/watch?v=OCEni5Ez0w8).
@@ -13,7 +11,7 @@ This application was made in conjunction with the following [API](https://github
 ### Installation
 
 Clone down this repo and run `npm install`.
-Once everything is installed, run `npm start` to start the server. If the browser does not open automatically you can view the application at http://localhost8000.
+Once everything is installed, open the main HTML page in the browser. Make sure to have the backend running.
 
 As this application was made to work in conjunction with this [API](https://github.com/andresanunezt/virtual-garden-backend), it is recommended to clone that repo as well.
 
