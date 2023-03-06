@@ -16,7 +16,7 @@ class Garden {
             <br>
             <h5> -------------------------------- </h5>
             <br>
-            <h2 id="name" data-id="${this.id}">Garden Name: ${this.name}</h2>
+            <h2 class="garden-header" id="name" data-id="${this.id}">Garden Name: ${this.name}</h2>
             <h3 id="location"> Location: ${this.location} </h3>
             <h3> Gardener: ${this.gardenerName}</h3>
             <p>${this.likes} likes</p>
@@ -27,12 +27,12 @@ class Garden {
             <br>
             <button data-id="${this.id}" class="add-plant-btn"> Add Plant to ${this.name} </button>
     
-            <div data-add-plant-form="${this.id}" class="plant-container">  
+            <div data-add-plant-form="${this.id}" class="plants-container">  
              
             </div>
             
     
-            <div data-garden="${this.id}" class="plant-container">  
+            <div data-garden="${this.id}" class="plants-container">  
             <h2> Plants: </h2>
           </div>
     
@@ -59,55 +59,51 @@ class Garden {
   };
 }
 
-// makeACard =(garden)=>{
+makeACard = (garden) => {
+  return `
+        <br>
+        <h5> -------------------------------- </h5>
+        <br>
+        <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
+        <h3 id="location"> Location: ${garden.location} </h3>
+        <h3> Gardener: ${garden.gardenerName}</h3>
+        <p>${garden.likes} likes</p>
+        <button data-id="${garden.id}" class="like-btn"> I Like</button>
+        <button data-id="${garden.id}" class="delete-btn"> Delete </button>
 
-//     return `
-//         <br>
-//         <h5> -------------------------------- </h5>
-//         <br>
-//         <h2 id="name" data-id="${garden.id}">Garden Name: ${garden.name}</h2>
-//         <h3 id="location"> Location: ${garden.location} </h3>
-//         <h3> Gardener: ${garden.gardenerName}</h3>
-//         <p>${garden.likes} likes</p>
-//         <button data-id="${garden.id}" class="like-btn"> I Like</button>
-//         <button data-id="${garden.id}" class="delete-btn"> Delete </button>
+        <br>
+        <br>
+        <br>
 
-//         <br>
-//         <br>
-//         <br>
+        <button data-id="${garden.id}" class="add-plant-btn"> Add Plant to ${garden.name} </button>
 
-//         <button data-id="${garden.id}" class="add-plant-btn"> Add Plant to ${garden.name} </button>
+        <div data-add-plant-form="${garden.id}" class="plants-container">
 
-//         <div data-add-plant-form="${garden.id}" class="plant-container">
+        </div>
 
-//         </div>
+        <div data-garden="${garden.id}" class="plants-container">
+        <h2> Plants: </h2>
+      </div>
 
-//         <div data-garden="${garden.id}" class="plant-container">
-//         <h2> Plants: </h2>
-//       </div>
+`;
+};
 
-// `
+renderGarden = (garden) => {
+  const cardDiv = document.createElement("div");
 
-// }
+  cardDiv.classList.add("card");
 
-// renderGarden =(garden)=> {
+  cardDiv.setAttribute("data-id", garden.id);
 
-//     const cardDiv = document.createElement("div")
+  cardDiv.id = garden.id;
 
-//     cardDiv.classList.add("card")
+  cardDiv.innerHTML = makeACard(garden);
+  //  debugger
+  console.log(garden);
 
-//     cardDiv.setAttribute("data-id", garden.id)
+  const collectionDiv = document.querySelector("#garden-collection");
 
-//     cardDiv.id = garden.id
+  collectionDiv.append(cardDiv);
 
-//     cardDiv.innerHTML = makeACard(garden)
-//     //  debugger
-//     console.log(garden);
-
-//     const collectionDiv = document.querySelector("#garden-collection");
-
-//     collectionDiv.append(cardDiv);
-
-//     // debugger
-
-// }
+  // debugger
+};

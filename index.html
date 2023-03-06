@@ -1,97 +1,81 @@
 <!DOCTYPE html>
 
-
 <html>
+  <head>
+    <title>Green Thumbs</title>
 
-<head>
-  <title> Green Thumbs </title>
-
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" />
 
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="js/models/garden.js"></script>
     <script type="text/javascript" src="js/models/plant.js"></script>
     <script type="text/javascript" src="js/services/API.js"></script>
+  </head>
 
-</head>
+  <body>
+    <div class="green-thumbs-container">
+      <div id="project-header" style="text-align: center">
+        <img
+          src="GREENTHUMB.png"
+          alt="class-project-header"
+          style="text-align: center"
+        />
+      </div>
 
-<body>
+      <div class="garden-form-container" style="text-align: center">
+        <form class="add-garden-form" id="add-garden-form">
+          <h3>Create a Garden</h3>
 
+          <div class="garden-form-input-container">
+            <h4 class="garden-form-input-title">Name:</h4>
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="Garden Name"
+              class="input-text"
+            />
+          </div>
+          <br />
+          <br />
+          <div class="garden-form-input-container">
+            <h4 class="garden-form-input-title">Location:</h4>
+            <input
+              type="text"
+              name="location"
+              value=""
+              placeholder="Location"
+              class="input-text"
+            />
+          </div>
+          <div class="garden-form-input-container">
+            <h4 class="garden-form-input-title">Gardener Name:</h4>
+            <input
+              type="text"
+              name="gardener_name"
+              value=""
+              placeholder="Gardener Name"
+              class="input-text"
+            />
+          </div>
+          <br />
+          <br />
+          <input type="submit" name="submit" value="add!" class="submit" />
+        </form>
+      </div>
 
-  <div id="project-header" style="text-align:center">
-    <img
-      src="GREENTHUMB.png"
-      alt="class-project-header"
-      style="text-align:center"
-    />
-  </div>
-
-<div class="container" style="text-align:center">
-    <form class="add-garden-form" id="add-garden-form">
-      <h3>Create a Garden</h3>
-
-
-      <h4>Name:</h4>
-      <input
-      type="text"
-      name="name"
-      value=""
-      placeholder="Garden Name"
-      class="input-text"
-      />
+      <p style="text-align: center">
+        <button class="new-garden-btn">Add a Garden</button>
+      </p>
 
       <br />
-      <h4>Location:</h4>
-      <input
-        type="text"
-        name="location"
-        value=""
-        placeholder="Location"
-        class="input-text"
-      />
+      <br />
 
-      <h4>Gardener Name:</h4>
-      <input
-      type="text"
-      name="gardener_name"
-      value=""
-      placeholder="Gardener Name"
-      class="input-text"
-      />
-
-    <br>
-      <br>
-      <input
-        type="submit"
-        name="submit"
-        value="add!"
-        class="submit"
-      />
-    </form>
-  </div>
-
-  <p style="text-align:center">
-    <button id="new-garden-btn">Add a Garden </button>
-  </p>
-  
-    <br>
-    <br>
-
-
-
-    <div id="garden-collection" style="text-align:center">
-      <button class="organize" style="text-align:center"> Organize by likes </button>
+      <div id="garden-collection" style="text-align: center">
+        <button class="organize" style="text-align: center">
+          Organize by likes
+        </button>
+      </div>
     </div>
-  
-</body>
-
-
-
-
-
-
-
-
-
-
+  </body>
 </html>
